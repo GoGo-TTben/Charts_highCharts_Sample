@@ -13,56 +13,239 @@
 </head>
 
 <body>
-    <div class='container'>
-        <div id='1'>
-            <div class='name'>bbbb</div>
-            <div class='number'>
-                <input type='text' value='110' />
-            </div>
-        </div>
-        <div id='2'>
-            <div class='name'>cccc</div>
-            <div class='number'>
-                <input type='text' value='120' />
-            </div>
-        </div>
-        <div id='3'>
-            <div class='name'>dddd</div>
-            <div class='number'>
-                <input type='text' value='140' />
-            </div>
-        </div>
-    </div>
+    <div id="header">当前位置：实时监测 -> 数据曲线图</div>
 
-    <button id="desc">从大到小</button>
-    <button id="asc">从小到大</button>
+    <div style="height: 100px; padding-top: 10px;">
+        <ul class="dash">
+            <li class="fade_hover tooltip selected" title="">
+                <a href="javascript:void(0);">
+
+                    <span>温度</span>
+                </a>
+            </li>
+            <li class="fade_hover tooltip" title="">
+                <a href="javascript:void(0);">
+
+                    <span>血氧</span>
+                </a>
+            </li>
+            <li class="fade_hover tooltip" title="">
+                <a href="javascript:void(0);">
+
+                    <span>血压</span>
+                </a>
+            </li>
+            <li class="fade_hover tooltip" title="">
+                <a href="javascript:void(0);">
+
+                    <span>心率</span>
+                </a>
+            </li>
+            <li class="fade_hover tooltip" title="">
+                <a href="javascript:void(0);">
+
+                    <span>α 脑电波</span>
+                </a>
+            </li>
+            <li class="fade_hover tooltip" title="">
+                <a href="javascript:void(0);">
+
+                    <span>β 脑电波</span>
+                </a>
+            </li>
+            <li class="fade_hover tooltip" title="">
+                <a href="javascript:void(0);">
+
+                    <span>θ 脑电波</span>
+                </a>
+            </li>
+            <li class="fade_hover tooltip" title="">
+                <a href="javascript:void(0);">
+
+                    <span>δ 脑电波</span>
+                </a>
+            </li>
+            <li class="fade_hover tooltip" title="">
+                <a href="javascript:void(0);">
+
+                    <span>ε 脑电波</span>
+                </a>
+            </li>
+            <li class="fade_hover tooltip" title="">
+                <a href="javascript:void(0);">
+
+                    <span>肌电波</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div id="data_list" class="common radius03">
+        <div class="ch radius03">
+            <div class="title" style="clear: left;">
+                <span class="icon"></span>
+                <span>曲线图</span>
+            </div>
+        </div>
+        <div class="cb">
+            <div class="cb_con" id="container01" style="min-width:800px; height:400px;"></div>
+            <div class="cb_con" id="container02" style="min-width:800px; height:400px;"></div>
+            <div class="cb_con" id="container03" style="min-width:800px; height:400px;"></div>
+            <div class="cb_con" id="container04" style="min-width:800px; height:400px;"></div>
+            <div class="cb_con" id="container05" style="min-width:800px; height:400px;"></div>
+            <div class="cb_con" id="container06" style="min-width:800px; height:400px;"></div>
+            <div class="cb_con" id="container07" style="min-width:800px; height:400px;"></div>
+            <div class="cb_con" id="container08" style="min-width:800px; height:400px;"></div>
+            <div class="cb_con" id="container09" style="min-width:800px; height:400px;"></div>
+            <div class="cb_con" id="container10" style="min-width:800px; height:400px;"></div>
+        </div>
 </body>
 
 </html>
 <script>
     $(document).ready(function() {
-        $(function() {
+        $('.data-table tr:even').css('background-color', '#F2F2F2');
+        $('.btn-lit').hover(function() {
+            $(this).addClass('btn-lit-hover');
+        }, function() {
+            $(this).removeClass('btn-lit-hover');
+        });
 
-            var asc = function(a, b) {
-                return $(a).find('input').val() > $(b).find('input').val() ? 1 : -1;
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
             }
+        });
 
-            var desc = function(a, b) {
-                return $(a).find('input').val() > $(b).find('input').val() ? -1 : 1;
+        var error = false;
+
+        function connect() {
+            $.ajax({
+                url: 'client.php?msg=web',
+                type: 'get',
+                dataType: 'json',
+                success: function(result) { //由服务器返回，并根据 dataType 参数进行处理后的数据；描述状态的字符串。
+                    //$('#tb tr:gt(0)').remove();//删除之前的数据
+                    if (result.is_ok) { //{"is_ok":1,"data":[13,56,89,5,21,64,79,51,46,31]}
+                        var x = (new Date()).getTime();
+                        //alert(result.data[0]);
+                        $.each(result.data, function(i) {
+                            var index = parseInt(result.data[i]) - 1; //parseInt() 函数可解析一个字符串，并返回一个整数。
+
+                            chart01.series[0].addPoint([x, parseInt(result.data[0])], true, true);
+                            chart02.series[index].addPoint([x, parseInt(result.data[1])], true, true);
+                            chart03.series[index].addPoint([x, parseInt(result.data[2])], true, true);
+                            chart04.series[index].addPoint([x, parseInt(result.data[3])], true, true);
+                            chart05.series[index].addPoint([x, parseInt(result.data[4])], true, true);
+                            chart06.series[index].addPoint([x, parseInt(result.data[5])], true, true);
+                            chart07.series[index].addPoint([x, parseInt(result.data[6])], true, true);
+                            chart08.series[index].addPoint([x, parseInt(result.data[7])], true, true);
+                            chart09.series[index].addPoint([x, parseInt(result.data[8])], true, true);
+                            chart10.series[index].addPoint([x, parseInt(result.data[9])], true, true);
+                        });
+                    } else {
+                        error = true;
+                        layer.alert(result.data);
+                    }     
+                },
+                complete: function(XHR, TS) { //请求完成后回调函数 (请求成功或失败之后均调用)。
+                    XHR = null; // 释放XMLHttprequest对象
+                    if (!error)
+                        connect();
+                }
+            });
+        }
+
+        function create_data() {
+            var data = [],
+                time = (new Date()).getTime(),
+                i;
+
+            for (i = -19; i <= 0; i++) {
+                data.push({
+                    x: time + i * 1000
+                });
             }
+            return data;
+        }
+        var chart01, chart02, chart03, chart04, chart05, chart06, chart07, chart08, chart09, chart10;
 
-            var sortByInput = function(sortBy) {
-                var sortEle = $('.container>div').sort(sortBy);
-                $('.container').empty().append(sortEle);
-            }
-
-            $('#desc').click(function() {
-                sortByInput(desc);
+        function create_chart(id, t, y_t) {
+            var chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: id,
+                    type: 'spline',
+                    animation: Highcharts.svg,
+                    backgroundColor: '#FFF',
+                    events: { //事件回调，支持addSeries方法，click方法，load方法，selection方法等的回调函数
+                        load: connect //图表加载完后事件
+                    }
+                },
+                title: {
+                    text: t
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 150
+                },
+                yAxis: {
+                    title: {
+                        text: y_t
+                    },
+                    plotLines: [{ //线
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    formatter: function() {
+                        return '<b>' + this.series.name + '</b><br/>' +
+                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                            Highcharts.numberFormat(this.y, 2);
+                    }
+                },
+                series: [{
+                    name: '实时数据',
+                    data: (function() {
+                            var data = [],
+                                time = (new Date()).getTime(),
+                                i;
+                            for (i = -19; i <= 0; i++) {
+                                data.push({
+                                    x: time + i * 1000,
+                                    y: Math.random()
+                                });
+                            }
+                            return data;
+                        })()
+                        //[11,44,45,55,25,5,5,5,5,55,6,55,85,45,24]
+                }],
+                credits: {
+                    enabled: false
+                }
             });
 
-            $('#asc').click(function() {
-                sortByInput(asc);
-            });
-        })
+            return chart;
+        }
+
+        var chart01 = create_chart('container01', '温度曲线图', '温度(℃)');
+        var chart02 = create_chart('container02', '血氧曲线图', '血氧(%)');
+        var chart03 = create_chart('container03', '血压曲线图', '血压(mmHG)');
+        var chart04 = create_chart('container04', '心率曲线图', '心率(bpm)');
+        var chart05 = create_chart('container05', 'α 脑电波曲线图', 'α脑电波(Hz)');
+        var chart06 = create_chart('container06', 'β 脑电波曲线图', 'β脑电波(Hz)');
+        var chart07 = create_chart('container07', 'θ 脑电波曲线图', 'θ脑电波(Hz)');
+        var chart08 = create_chart('container08', 'δ 脑电波曲线图', 'δ脑电波(Hz)');
+        var chart09 = create_chart('container09', 'ε 脑电波曲线图', 'ε脑电波(Hz)');
+        var chart10 = create_chart('container10', '肌电波曲线图', '肌电波(Hz)');
+
+        $('.cb_con').eq(0).show().siblings().hide();
+        $('.dash li').click(function() {
+            $(this).addClass('selected').siblings().removeClass('selected');
+            var n = parseInt($(this).index());
+            $('.cb_con').eq(n).show().siblings().hide();
+        });
+        //eq() 选择器选取带有指定 index 值的元素。
+
     });
 </script>
