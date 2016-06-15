@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<!-- saved from url=(0117)http://localhost/chart/USagechart.html?PatientID=1234567&sD=2013-04-29%2015:35:00&eD=2013-05-02%2017:03:00&usageNum=4 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<link href="./USagechart-2_files/jquery-ui.css" rel="stylesheet">
+	<script type="text/javascript" src="./USagechart-2_files/jquery.min.js"></script>
+	<script type="text/javascript" src="./USagechart-2_files/jquery-ui.min.js"></script>
+	<link href="./USagechart-2_files/jquery-ui-timepicker-addon.css" rel="stylesheet">
+	<script type="text/javascript" src="./USagechart-2_files/jquery-ui-timepicker-addon.js"></script>
+	<script type="text/javascript" src="./USagechart-2_files/jquery-ui-sliderAccess.js"></script>
+
+</head>
+
+<body>
+	<input id="range_example_2_start" type="text" style="display:none" class="hasDatepicker">
+	<input id="range_example_2_end" type="text" style="display:none" class="hasDatepicker">
+	<button onclick="select(1)" style="display:none">Try it</button>
+	<div id="H"></div>
+	<div id="A"></div>
+	<script src="./USagechart-2_files/highcharts.js"></script>
+	<script src="./USagechart-2_files/highcharts-more.js"></script>
+	<script src="./USagechart-2_files/exporting.js"></script>
+
+	<div id="container" style="min-width: 400px; height:100%;margin:0 auto"><div class="chart" data-highcharts-chart="0"><div class="highcharts-container" id="highcharts-0" style="position: relative; overflow: hidden; width: 1333px; height: 420px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg version="1.1" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="1333" height="420"><desc>Created with Highcharts 4.2.5</desc><defs><clippath id="highcharts-1"><rect x="0" y="0" width="300" height="1224"></rect></clippath></defs><rect x="0" y="0" width="1333" height="420" fill="#FFFFFF" class=" highcharts-background"></rect><path fill="none" d="M 123 40 L 123 340" stroke="lightgray" stroke-width="2" visibility="visible"></path><path fill="none" d="M 221 40 L 221 340" stroke="lightgray" stroke-width="2" visibility="visible"></path><path fill="none" d="M 319 40 L 319 340" stroke="lightgray" stroke-width="2" visibility="visible"></path><path fill="none" d="M 417 40 L 417 340" stroke="lightgray" stroke-width="2" visibility="visible"></path><path fill="none" d="M 515 40 L 515 340" stroke="lightgray" stroke-width="2" visibility="visible"></path><path fill="none" d="M 613 40 L 613 340" stroke="lightgray" stroke-width="2" visibility="visible"></path><path fill="none" d="M 711 40 L 711 340" stroke="lightgray" stroke-width="2" visibility="visible"></path><path fill="none" d="M 809 40 L 809 340" stroke="lightgray" stroke-width="2" visibility="visible"></path><path fill="none" d="M 907 40 L 907 340" stroke="lightgray" stroke-width="2" visibility="visible"></path><path fill="none" d="M 1005 40 L 1005 340" stroke="lightgray" stroke-width="2" visibility="visible"></path><path fill="none" d="M 1103 40 L 1103 340" stroke="lightgray" stroke-width="2" visibility="visible"></path><path fill="none" d="M 1201 40 L 1201 340" stroke="lightgray" stroke-width="2" visibility="visible"></path><path fill="none" d="M 1299 40 L 1299 340" stroke="lightgray" stroke-width="2" visibility="visible"></path><g class="highcharts-grid"></g><g class="highcharts-grid"></g><g class="highcharts-axis"><path fill="none" d="M 98 79.5 L 88 79.5" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 98 153.5 L 88 153.5" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 98 227.5 L 88 227.5" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 98 301.5 L 88 301.5" stroke="#C0D0E0" stroke-width="1" opacity="1"></path><path fill="none" d="M 98 40 L 98 340" stroke="black" stroke-width="2"></path></g><g class="highcharts-axis"><text x="710.5" text-anchor="middle" transform="translate(0,0)" class=" highcharts-yaxis-title" style="color:#707070;fill:#707070;" y="6">Values</text></g><g class="highcharts-series-group"><g class="highcharts-series highcharts-series-0 highcharts-tracker" transform="translate(1323,340) rotate(90) scale(-1,1) scale(1 1)" style="" width="1225" height="300" clip-path="url(#highcharts-1)"><rect x="20.5" y="1183.35" width="36" height="17.15000000000009" stroke="#FFFFFF" stroke-width="1" fill="green" rx="0" ry="0"></rect><rect x="94.5" y="964.4833333333331" width="36" height="236.01666666666688" stroke="#FFFFFF" stroke-width="1" fill="green" rx="0" ry="0"></rect><rect x="20.5" y="956.3166666666668" width="36" height="15.516666666666424" stroke="#FFFFFF" stroke-width="1" fill="green" rx="0" ry="0"></rect><rect x="20.5" y="980" width="36" height="22.866666666666788" stroke="#FFFFFF" stroke-width="1" fill="green" rx="0" ry="0"></rect><rect x="20.5" y="1006.1333333333332" width="36" height="13.883333333333667" stroke="#FFFFFF" stroke-width="1" fill="green" rx="0" ry="0"></rect><rect x="20.5" y="1023.2833333333333" width="36" height="23.683333333333394" stroke="#FFFFFF" stroke-width="1" fill="green" rx="0" ry="0"></rect><rect x="20.5" y="1048.6" width="36" height="20.41666666666697" stroke="#FFFFFF" stroke-width="1" fill="green" rx="0" ry="0"></rect><rect x="20.5" y="1072.2833333333333" width="36" height="17.149999999999864" stroke="#FFFFFF" stroke-width="1" fill="green" rx="0" ry="0"></rect><rect x="94.5" y="24.5" width="36" height="43.28333333333171" stroke="#FFFFFF" stroke-width="1" fill="green" rx="0" ry="0"></rect><rect x="94.5" y="71.86666666666838" width="36" height="26.950000000000045" stroke="#FFFFFF" stroke-width="1" fill="green" rx="0" ry="0"></rect><rect x="94.5" y="99.63333333333162" width="36" height="46.549999999999955" stroke="#FFFFFF" stroke-width="1" fill="green" rx="0" ry="0"></rect><rect x="168.5" y="24.5" width="36" height="939.1666666666667" stroke="#FFFFFF" stroke-width="1" fill="green" rx="0" ry="0"></rect><rect x="168.5" y="980" width="36" height="33.48333333333312" stroke="#FFFFFF" stroke-width="1" fill="green" rx="0" ry="0"></rect><rect x="242.5" y="943.25" width="36" height="17.149999999999977" stroke="#FFFFFF" stroke-width="1" fill="red" rx="0" ry="0"></rect><rect x="242.5" y="1009.4000000000001" width="36" height="15.516666666666652" stroke="#FFFFFF" stroke-width="1" fill="red" rx="0" ry="0"></rect></g><g class="highcharts-markers highcharts-series-0" transform="translate(1323,340) rotate(90) scale(-1,1) scale(1 1)" width="1225" height="300" clip-path="none"></g></g><g class="highcharts-data-labels highcharts-series-0 highcharts-tracker" visibility="visible" transform="translate(98,40) scale(1 1)" opacity="1" style=""><g style="" transform="translate(42,257)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(261,183)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(269,257)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(245,257)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(219,257)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(202,257)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(176,257)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(153,257)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(1201,183)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(1153,183)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(1125,183)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(1201,109)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(245,100)" opacity="0" visibility="hidden"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"><tspan>24.66666603088379</tspan></text></g><g style="" transform="translate(282,35)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(216,26)" opacity="0" visibility="hidden"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"><tspan>0.6666666865348816</tspan></text></g><g style="" transform="translate(15,257)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(15,183)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(243,257)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(212,257)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(195,257)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(168,257)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(146,257)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(126,257)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(1147,183)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(1116,183)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(1069,183)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(251,109)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(72,100)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"><tspan>24.66666603088379</tspan></text></g><g style="" transform="translate(255,35)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"></text></g><g style="" transform="translate(53,26)"><text x="5" style="font-size:11px;font-weight:bold;color:#000000;text-shadow:0 0 6px #FFFFFF, 0 0 3px #FFFFFF;fill:#000000;text-rendering:geometricPrecision;" y="16"><tspan>0.6666666865348816</tspan></text></g></g><g class="highcharts-axis-labels highcharts-xaxis-labels"><text x="83" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:430px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="81" opacity="1">2013/04/29</text><text x="83" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:430px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="155" opacity="1">2013/04/30</text><text x="83" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:430px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="229" opacity="1">2013/05/01</text><text x="83" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:430px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="303" opacity="1">2013/05/02</text></g><g class="highcharts-axis-labels highcharts-yaxis-labels"><text x="122.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="22" opacity="1">12</text><text x="171.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="40" opacity="1"></text><text x="220.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="22" opacity="1">14</text><text x="269.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="40" opacity="1"></text><text x="318.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="22" opacity="1">16</text><text x="367.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="40" opacity="1"></text><text x="416.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="22" opacity="1">18</text><text x="465.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="40" opacity="1"></text><text x="514.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="22" opacity="1">20</text><text x="563.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="40" opacity="1"></text><text x="612.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="22" opacity="1">22</text><text x="661.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="40" opacity="1"></text><text x="710.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="22" opacity="1">0</text><text x="759.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="40" opacity="1"></text><text x="808.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="22" opacity="1">2</text><text x="857.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="40" opacity="1"></text><text x="906.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="22" opacity="1">4</text><text x="955.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="40" opacity="1"></text><text x="1004.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="22" opacity="1">6</text><text x="1053.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="40" opacity="1"></text><text x="1102.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="22" opacity="1">8</text><text x="1151.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="40" opacity="1"></text><text x="1200.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="22" opacity="1">10</text><text x="1249.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="40" opacity="1"></text><text x="1298.5" style="color:#606060;cursor:default;font-size:11px;fill:#606060;" text-anchor="middle" transform="translate(0,0)" y="22" opacity="1">12</text></g><g class="highcharts-tooltip" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(835,137)" opacity="1" visibility="visible"><path fill="none" d="M 3.5 0.5 L 86.5 0.5 C 89.5 0.5 89.5 0.5 89.5 3.5 L 89.5 31.5 C 89.5 34.5 89.5 34.5 86.5 34.5 L 3.5 34.5 C 0.5 34.5 0.5 34.5 0.5 31.5 L 0.5 23 -5.5 17 0.5 11 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)"></path><path fill="none" d="M 3.5 0.5 L 86.5 0.5 C 89.5 0.5 89.5 0.5 89.5 3.5 L 89.5 31.5 C 89.5 34.5 89.5 34.5 86.5 34.5 L 3.5 34.5 C 0.5 34.5 0.5 34.5 0.5 31.5 L 0.5 23 -5.5 17 0.5 11 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)"></path><path fill="none" d="M 3.5 0.5 L 86.5 0.5 C 89.5 0.5 89.5 0.5 89.5 3.5 L 89.5 31.5 C 89.5 34.5 89.5 34.5 86.5 34.5 L 3.5 34.5 C 0.5 34.5 0.5 34.5 0.5 31.5 L 0.5 23 -5.5 17 0.5 11 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)"></path><path fill="rgba(249, 249, 249, .85)" d="M 3.5 0.5 L 86.5 0.5 C 89.5 0.5 89.5 0.5 89.5 3.5 L 89.5 31.5 C 89.5 34.5 89.5 34.5 86.5 34.5 L 3.5 34.5 C 0.5 34.5 0.5 34.5 0.5 31.5 L 0.5 23 -5.5 17 0.5 11 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" stroke="green" stroke-width="1"></path><text x="8" style="font-size:12px;color:#333333;fill:#333333;" y="20">2013/04/30</text></g></svg></div></div></div>
+
+
+	<script language="JavaScript">
+		$(document).ready(function() {
+			//get getUrlParameter for usageNum
+			var getUrlParameter = function getUrlParameter(sParam) {
+				var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+					sURLVariables = sPageURL.split('&'),
+					sParameterName,
+					i;
+
+				for (i = 0; i < sURLVariables.length; i++) {
+					sParameterName = sURLVariables[i].split('=');
+
+					if (sParameterName[0] === sParam) {
+						return sParameterName[1] === undefined ? true : sParameterName[1];
+					}
+				}
+			};
+
+
+
+			var qs = (function(a) {
+				if (a == "") return {};
+				var b = {};
+				for (var i = 0; i < a.length; ++i) {
+					var p = a[i].split('=', 2);
+					if (p.length == 1)
+						b[p[0]] = "";
+					else
+						b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+				}
+				return b;
+			})(window.location.search.substr(1).split('&'));
+			/*-----------------------------------------------------------------------------*/
+			var i = 0;
+			var startDateTextBox = $('#range_example_2_start');
+			var endDateTextBox = $('#range_example_2_end');
+			var savedata1 = [];
+			var savedata2 = [];
+			var tempv1;
+			var tempv2;
+			var x;
+			var lasttime;
+			$.timepicker.datetimeRange(
+				startDateTextBox,
+				endDateTextBox, {
+
+					dateFormat: 'yy,mm,dd',
+					timeFormat: '00:00:00',
+					start: {},
+					end: {}
+				}
+			);
+			select();
+
+			function select(sw) {
+
+				i = 0;
+				savedata1 = [];
+				savedata2 = [];
+				var c = $("#range_example_2_start").val();
+				var d = $("#range_example_2_end").val();
+				var a = Date.parse(c);
+				var b = Date.parse(d);
+				date1 = new Date(a);
+				date2 = new Date(b);
+				var tb_star = date1.getTime();
+				var tb_end = date2.getTime() + 86400000;
+				var diff = (tb_end - tb_star) / 86400000;
+
+				//$.getJSON("UsageTime.json", function(result){
+				var resData;
+				var sD = Date.parse(qs["sD"]);
+				var eD = Date.parse(qs["eD"]);
+				var uptJson = {
+					'PatientLoginID': qs["PatientID"],
+					'StartDate': sD,
+					'EndDate': eD,
+					'hours': qs["usageNum"],
+					'type': 'D'
+				};
+				$.ajax({
+					headers: {
+						'Accepts': 'application/json',
+						'Content-Type': 'application/json',
+						//'appkey': '6fe700f7-2f1a-4ffe-94a3-8aa9557a7f82',
+						'appkey': 'd041af23-bc91-4f6a-9da5-18296de871c0',
+						'x-thingworx-session': 'true',
+						'Access-Control-Allow-Origin': '*',
+						'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+						'Access-Control-Allow-Headers': 'Content-Type, Accept'
+					},
+					type: "POST",
+					dataType: "json",
+					data: JSON.stringify(uptJson),
+					url: "http://localhost/Thingworx/Things/EZLibSteamSenSor/Services/UsageTImeChartData",
+					success: function(data, statusText, xhr) {
+						//var res = data.rows[0];
+						var res = data.array;
+						resData = res;
+						console.log(res);
+						var length = res.length;
+						$.each(res, function(key, field) {
+							var usageNum = getUrlParameter("usageNum");
+							//only Min value && Max change color
+							// value < usageNum color change to red
+							// value > usageNum color change to green
+							if (usageNum != undefined && usageNum != null) {
+								if (field.testValue < usageNum) {
+									savedata2.push({
+										day: parseDate(field.Dt),
+										value: field.testValue,
+										color: "red"
+									});
+								} else {
+									savedata2.push({
+										day: parseDate(field.Dt),
+										value: field.testValue,
+										color: "green"
+									});
+								}
+
+							} else {
+								avedata2.push({
+									day: parseDate(field.Dt),
+									value: field.testValue,
+									color: "green"
+								});
+							}
+						});
+
+					}
+				});
+				/*		str = JSON.stringify(savedata2[0].day);
+						document.getElementById("H").innerHTML = str;*/
+
+				//$.getJSON("UsageTime.json", function(result){
+				var uptJson2 = {
+					'PatientLoginID': qs["PatientID"],
+					'StartDate': sD,
+					'EndDate': eD,
+					'hours': qs["usageNum"],
+					'type': 'R'
+				};
+				$.ajax({
+					headers: {
+						'Accepts': 'application/json',
+						'Content-Type': 'application/json',
+						//'appkey': '6fe700f7-2f1a-4ffe-94a3-8aa9557a7f82',
+						'appkey': 'd041af23-bc91-4f6a-9da5-18296de871c0',
+						'x-thingworx-session': 'true',
+						'Access-Control-Allow-Origin': '*',
+						'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+						'Access-Control-Allow-Headers': 'Content-Type, Accept'
+					},
+					type: "POST",
+					dataType: "json",
+					data: JSON.stringify(uptJson2),
+					url: "http://localhost/Thingworx/Things/EZLibSteamSenSor/Services/UsageTImeChartData",
+					success: function(data, statusText, xhr) {
+						//var res = data.rows[0];
+						var res = data.array;
+						resData = res.reverse();
+						var length = res.length;
+						$.each(res, function(key, field) {
+							if (field.V1 <= 12) {
+								tempv1 = Number(field.V1);
+							} else if (field.V1 >= 12) {
+								tempv1 = Number(field.V1);
+							}
+							if (field.V2 <= 12) {
+								tempv2 = Number(field.V2);
+							} else if (field.V2 >= 12) {
+								tempv2 = Number(field.V2);
+							}
+							if (sw == 1) {
+								if (tb_star <= parseDate(field.Dt) && parseDate(field.Dt) <= tb_end) {
+									//savedata1.push({ x: parseDate(field.Dt), low: tempv1, high: tempv2, label: field.lbl, color: "green" });
+									savedata1.push({
+										x: parseDate(field.Dt),
+										low: tempv1,
+										high: tempv2,
+										label: "",
+										color: "green"
+									});
+									if (lasttime != parseDate(field.Dt)) {
+										x = i - 1;
+										try {
+											for (var y = 0; y < savedata2.length; y++) {
+												if (savedata2[y].day == savedata1[x].x) {
+													savedata1[x].label = savedata2[y].value;
+												}
+											}
+										} catch (err) {}
+									}
+									lasttime = parseDate(field.Dt);
+									i++;
+								}
+							} else {
+								//savedata1.push({ x: parseDate(field.Dt), low: tempv1, high: tempv2, label: field.lbl, color: "green" });
+								savedata1.push({
+									x: parseDate(field.Dt),
+									low: tempv1,
+									high: tempv2,
+									label: "",
+									color: "green"
+								});
+								if (lasttime != parseDate(field.Dt)) {
+									x = i - 1;
+									try {
+										for (var y = 0; y < savedata2.length; y++) {
+											if (savedata2[y].day == savedata1[x].x) {
+												savedata1[x].label = savedata2[y].value;
+											}
+										}
+									} catch (err) {}
+								}
+								lasttime = parseDate(field.Dt);
+								i++;
+							}
+						});
+
+						//Virew Man & Min text
+						var to = savedata1.length - 1;
+						for (var y = 0; y < savedata2.length; y++) {
+							if (savedata2[y].day == savedata1[to].x) {
+
+								savedata1[to].label = savedata2[y].value;
+
+							}
+						}
+						for (var y = 0; y < savedata2.length; y++) {
+							if (savedata2[y].color == "red") {
+								for (var t = 0; t < savedata1.length; t++) {
+									if (savedata2[y].day == savedata1[t].x) {
+										savedata1[t].color = savedata2[y].color;
+									}
+								}
+							}
+						}
+
+						mychart();
+					}
+				});
+			}
+
+			function parseDate(dateString) {
+				var time = Date.parse(dateString);
+				if (!time) {
+					time = Date.parse(dateString.replace("T", " "));
+					if (!time) {
+						bound = dateString.indexOf('T');
+						var dateData = dateString.slice(0, bound).split('-');
+						var timeData = dateString.slice(bound + 1, -1).split(':');
+
+						time = Date.UTC(dateData[0], dateData[1] - 1, dateData[2], timeData[0], timeData[1], timeData[2]);
+					}
+				}
+				return time;
+			}
+			//foreach  everyday data
+			function mychart() {
+				$("#container").html("");
+				$('<div class="chart">')
+					.appendTo('#container')
+					.highcharts({
+						chart: {
+							type: 'columnrange',
+							inverted: true,
+							marginTop: 40,
+							marginBottom: 80,
+							height: i * 20 + 120
+						},
+
+						title: {
+							text: ''
+						},
+
+						xAxis: {
+							type: 'datetime',
+							dateTimeLabelFormats: { // don't display the dummy year
+								day: '%Y/%m/%d'
+							},
+							lineColor: 'black',
+							lineWidth: 2,
+
+							tickInterval: 3600000 * 31
+						},
+
+						yAxis: {
+							gridLineWidth: 0,
+							plotLines: [{
+								color: 'lightgray',
+								width: 2,
+								value: 0
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 2
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 4
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 6
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 8
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 10
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 12
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 14
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 16
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 18
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 20
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 22
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 24
+							}],
+							opposite: true,
+
+							/*minorTickInterval: 7 * 24 * 3600 * 1000,
+				      	minorTickPosition:'outside',
+				      	minorTickLength:10,
+				        minorTickWidth: 1
+				        minorGridLineWidth: 0,
+							*/
+							categories: [12, "", 14, "", 16, "", 18, "", 20, "", 22, "", 00, "", 02, "", 04, "", 06, "", 08, "", 10, "", 12],
+							min: 0,
+							max: 24
+						},
+						plotOptions: {
+							columnrange: {
+								dataLabels: {
+									enabled: true,
+									formatter: function() {
+										return this.point.label;
+									}
+								}
+							},
+
+						},
+						tooltip: {
+							formatter: function() {
+								return Highcharts.dateFormat('%Y/%m/%d', this.x);
+							}
+						},
+						exporting: {
+							enabled: false
+						},
+						credits: {
+							enabled: false
+						},
+						legend: {
+							enabled: false
+						},
+
+						series: [{
+							data: savedata1
+						}],
+					}, function(chart) {
+						$.each(chart.series[0].data, function(i, e) {
+							//e.dataLabel.destroy();
+						});
+					});
+			}
+		});
+	</script>
+
+
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div></body></html>

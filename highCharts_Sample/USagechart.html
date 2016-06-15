@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	<link href='https://cdn.jsdelivr.net/jquery.ui.timepicker.addon/1.4.5/jquery-ui-timepicker-addon.css' rel='stylesheet'>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.ui.timepicker.addon/1.4.5/jquery-ui-timepicker-addon.js"></script>
+	<script type='text/javascript' src='https://cdn.jsdelivr.net/jquery.ui.timepicker.addon/1.4.5/jquery-ui-sliderAccess.js'></script>
+
+</head>
+
+<body>
+	<input id="range_example_2_start" type="text" style="display:none" />
+	<input id="range_example_2_end" type="text" style="display:none" />
+	<button onclick="select(1)" style="display:none">Try it</button>
+	<div id="H"></div>
+	<div id="A"></div>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-more.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+	<div id="container" style="min-width: 400px; height:100%;margin:0 auto"></div>
+
+
+	<script language="JavaScript">
+		$(document).ready(function() {
+			//get getUrlParameter for usageNum
+			var getUrlParameter = function getUrlParameter(sParam) {
+				var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+					sURLVariables = sPageURL.split('&'),
+					sParameterName,
+					i;
+
+				for (i = 0; i < sURLVariables.length; i++) {
+					sParameterName = sURLVariables[i].split('=');
+
+					if (sParameterName[0] === sParam) {
+						return sParameterName[1] === undefined ? true : sParameterName[1];
+					}
+				}
+			};
+
+
+
+			var qs = (function(a) {
+				if (a == "") return {};
+				var b = {};
+				for (var i = 0; i < a.length; ++i) {
+					var p = a[i].split('=', 2);
+					if (p.length == 1)
+						b[p[0]] = "";
+					else
+						b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+				}
+				return b;
+			})(window.location.search.substr(1).split('&'));
+			/*-----------------------------------------------------------------------------*/
+			var i = 0;
+			var startDateTextBox = $('#range_example_2_start');
+			var endDateTextBox = $('#range_example_2_end');
+			var savedata1 = [];
+			var savedata2 = [];
+			var tempv1;
+			var tempv2;
+			var x;
+			var lasttime;
+			$.timepicker.datetimeRange(
+				startDateTextBox,
+				endDateTextBox, {
+
+					dateFormat: 'yy,mm,dd',
+					timeFormat: '00:00:00',
+					start: {},
+					end: {}
+				}
+			);
+			select();
+
+			function select(sw) {
+
+				i = 0;
+				savedata1 = [];
+				savedata2 = [];
+				var c = $("#range_example_2_start").val();
+				var d = $("#range_example_2_end").val();
+				var a = Date.parse(c);
+				var b = Date.parse(d);
+				date1 = new Date(a);
+				date2 = new Date(b);
+				var tb_star = date1.getTime();
+				var tb_end = date2.getTime() + 86400000;
+				var diff = (tb_end - tb_star) / 86400000;
+
+				//$.getJSON("UsageTime.json", function(result){
+				var resData;
+				var sD = Date.parse(qs["sD"]);
+				var eD = Date.parse(qs["eD"]);
+				var uptJson = {
+					'PatientLoginID': qs["PatientID"],
+					'StartDate': sD,
+					'EndDate': eD,
+					'hours': qs["usageNum"],
+					'type': 'D'
+				};
+				$.ajax({
+					headers: {
+						'Accepts': 'application/json',
+						'Content-Type': 'application/json',
+						//'appkey': '6fe700f7-2f1a-4ffe-94a3-8aa9557a7f82',
+						'appkey': 'd041af23-bc91-4f6a-9da5-18296de871c0',
+						'x-thingworx-session': 'true',
+						'Access-Control-Allow-Origin': '*',
+						'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+						'Access-Control-Allow-Headers': 'Content-Type, Accept'
+					},
+					type: "POST",
+					dataType: "json",
+					data: JSON.stringify(uptJson),
+					url: "http://localhost/Thingworx/Things/EZLibSteamSenSor/Services/UsageTImeChartData",
+					success: function(data, statusText, xhr) {
+						//var res = data.rows[0];
+						var res = data.array;
+						resData = res;
+						var length = res.length;
+						$.each(res, function(key, field) {
+							var usageNum = getUrlParameter("usageNum");
+							//only Min value && Max change color
+							// value < usageNum color change to red
+							// value > usageNum color change to green
+							if (usageNum != undefined && usageNum != null) {
+								if (field.testValue < usageNum) {
+									savedata2.push({
+										day: parseDate(field.Dt),
+										value: field.testValue,
+										color: "red"
+									});
+								} else {
+									savedata2.push({
+										day: parseDate(field.Dt),
+										value: field.testValue,
+										color: "green"
+									});
+								}
+
+							} else {
+								avedata2.push({
+									day: parseDate(field.Dt),
+									value: field.testValue,
+									color: "green"
+								});
+							}
+						});
+
+					}
+				});
+				/*		str = JSON.stringify(savedata2[0].day);
+						document.getElementById("H").innerHTML = str;*/
+
+				//$.getJSON("UsageTime.json", function(result){
+				var uptJson2 = {
+					'PatientLoginID': qs["PatientID"],
+					'StartDate': sD,
+					'EndDate': eD,
+					'hours': qs["usageNum"],
+					'type': 'R'
+				};
+				$.ajax({
+					headers: {
+						'Accepts': 'application/json',
+						'Content-Type': 'application/json',
+						//'appkey': '6fe700f7-2f1a-4ffe-94a3-8aa9557a7f82',
+						'appkey': 'd041af23-bc91-4f6a-9da5-18296de871c0',
+						'x-thingworx-session': 'true',
+						'Access-Control-Allow-Origin': '*',
+						'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+						'Access-Control-Allow-Headers': 'Content-Type, Accept'
+					},
+					type: "POST",
+					dataType: "json",
+					data: JSON.stringify(uptJson2),
+					url: "http://localhost/Thingworx/Things/EZLibSteamSenSor/Services/UsageTImeChartData",
+					success: function(data, statusText, xhr) {
+						//var res = data.rows[0];
+						var res = data.array;
+						resData = res.reverse();
+						var length = res.length;
+						$.each(res, function(key, field) {
+							if (field.V1 <= 12) {
+								tempv1 = Number(field.V1);
+							} else if (field.V1 >= 12) {
+								tempv1 = Number(field.V1);
+							}
+							if (field.V2 <= 12) {
+								tempv2 = Number(field.V2);
+							} else if (field.V2 >= 12) {
+								tempv2 = Number(field.V2);
+							}
+							if (sw == 1) {
+								if (tb_star <= parseDate(field.Dt) && parseDate(field.Dt) <= tb_end) {
+									//savedata1.push({ x: parseDate(field.Dt), low: tempv1, high: tempv2, label: field.lbl, color: "green" });
+									savedata1.push({
+										x: parseDate(field.Dt),
+										low: tempv1,
+										high: tempv2,
+										label: "",
+										color: "green"
+									});
+									if (lasttime != parseDate(field.Dt)) {
+										x = i - 1;
+										try {
+											for (var y = 0; y < savedata2.length; y++) {
+												if (savedata2[y].day == savedata1[x].x) {
+													savedata1[x].label = savedata2[y].value;
+												}
+											}
+										} catch (err) {}
+									}
+									lasttime = parseDate(field.Dt);
+									i++;
+								}
+							} else {
+								//savedata1.push({ x: parseDate(field.Dt), low: tempv1, high: tempv2, label: field.lbl, color: "green" });
+								savedata1.push({
+									x: parseDate(field.Dt),
+									low: tempv1,
+									high: tempv2,
+									label: "",
+									color: "green"
+								});
+								if (lasttime != parseDate(field.Dt)) {
+									x = i - 1;
+									try {
+										for (var y = 0; y < savedata2.length; y++) {
+											if (savedata2[y].day == savedata1[x].x) {
+												savedata1[x].label = savedata2[y].value;
+											}
+										}
+									} catch (err) {}
+								}
+								lasttime = parseDate(field.Dt);
+								i++;
+							}
+						});
+
+						//Virew Man & Min text
+						var to = savedata1.length - 1;
+						for (var y = 0; y < savedata2.length; y++) {
+							if (savedata2[y].day == savedata1[to].x) {
+
+								savedata1[to].label = savedata2[y].value;
+
+							}
+						}
+						for (var y = 0; y < savedata2.length; y++) {
+							if (savedata2[y].color == "red") {
+								for (var t = 0; t < savedata1.length; t++) {
+									if (savedata2[y].day == savedata1[t].x) {
+										savedata1[t].color = savedata2[y].color;
+									}
+								}
+							}
+						}
+
+						mychart();
+					}
+				});
+			}
+
+			function parseDate(dateString) {
+				var time = Date.parse(dateString);
+				if (!time) {
+					time = Date.parse(dateString.replace("T", " "));
+					if (!time) {
+						bound = dateString.indexOf('T');
+						var dateData = dateString.slice(0, bound).split('-');
+						var timeData = dateString.slice(bound + 1, -1).split(':');
+
+						time = Date.UTC(dateData[0], dateData[1] - 1, dateData[2], timeData[0], timeData[1], timeData[2]);
+					}
+				}
+				return time;
+			}
+			//foreach  everyday data
+			function mychart() {
+				$("#container").html("");
+				$('<div class="chart">')
+					.appendTo('#container')
+					.highcharts({
+						chart: {
+							type: 'columnrange',
+							inverted: true,
+							marginTop: 40,
+							marginBottom: 80,
+							height: i * 20 + 120
+						},
+
+						title: {
+							text: ''
+						},
+
+						xAxis: {
+							type: 'datetime',
+							dateTimeLabelFormats: { // don't display the dummy year
+								day: '%Y/%m/%d'
+							},
+							lineColor: 'black',
+							lineWidth: 2,
+
+							tickInterval: 3600000 * 31
+						},
+
+						yAxis: {
+							gridLineWidth: 0,
+							plotLines: [{
+								color: 'lightgray',
+								width: 2,
+								value: 0
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 2
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 4
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 6
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 8
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 10
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 12
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 14
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 16
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 18
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 20
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 22
+							}, {
+								color: 'lightgray',
+								width: 2,
+								value: 24
+							}],
+							opposite: true,
+
+							/*minorTickInterval: 7 * 24 * 3600 * 1000,
+				      	minorTickPosition:'outside',
+				      	minorTickLength:10,
+				        minorTickWidth: 1
+				        minorGridLineWidth: 0,
+							*/
+							categories: [12, "", 14, "", 16, "", 18, "", 20, "", 22, "", 00, "", 02, "", 04, "", 06, "", 08, "", 10, "", 12],
+							min: 0,
+							max: 24
+						},
+						plotOptions: {
+							columnrange: {
+								dataLabels: {
+									enabled: true,
+									formatter: function() {
+										return this.point.label;
+									}
+								}
+							},
+
+						},
+						tooltip: {
+							formatter: function() {
+								return Highcharts.dateFormat('%Y/%m/%d', this.x);
+							}
+						},
+						exporting: {
+							enabled: false
+						},
+						credits: {
+							enabled: false
+						},
+						legend: {
+							enabled: false
+						},
+
+						series: [{
+							data: savedata1
+						}],
+					}, function(chart) {
+						$.each(chart.series[0].data, function(i, e) {
+							//e.dataLabel.destroy();
+						});
+					});
+			}
+		});
+	</script>
+</body>
+
+</html>
