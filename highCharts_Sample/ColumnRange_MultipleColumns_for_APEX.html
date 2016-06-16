@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/highcharts-more.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+
+    <title>Multiple Columns</title>
+</head>
+
+<body>
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+</body>
+<script>
+    $(document).ready(function() {
+        $(function() {
+
+            var series = [{
+                name: 'Car 1',
+                data: [
+                    [1, 3],
+                    [4, 6],
+                    [7, 9]
+                ]
+            }, {
+                name: 'Car 2',
+                data: [
+                    [2, 3],
+                    [8, 10],
+                    [12, 18]
+                ]
+            }, {
+                name: 'Car 3',
+                data: [
+                    [5, 9],
+                    [1, 2]
+                ]
+            }];
+
+            // massage the data
+            var data = [];
+            for (var i = 0; i < series.length; i++) {
+                for (var j = 0; j < series[i].data.length; j++) {
+                    data.push({
+                        x: i,
+                        low: series[i].data[j][0],
+                        high: series[i].data[j][1],
+                        name: series[i].name
+                    });
+                }
+            }
+
+            $('#container').highcharts({
+
+                chart: {
+                    type: 'columnrange',
+                    inverted: true
+                },
+
+                plotOptions: {
+                    columnrange: {
+                        dataLabels: {
+                            enabled: false
+                        }
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+
+                series: [{
+                    name: 'Cars',
+                    data: data
+                }]
+
+            });
+
+        });
+    });
+</script>
+
+</html>
