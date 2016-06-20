@@ -50,7 +50,8 @@
                         x: i,
                         low: series[i].data[j][0],
                         high: series[i].data[j][1],
-                        name: series[i].name
+                        //name: series[i].name,
+                        value:111
                     });
                 }
             }
@@ -65,7 +66,7 @@
                 plotOptions: {
                     columnrange: {
                         dataLabels: {
-                            enabled: false
+                            enabled: true
                         }
                     }
                 },
@@ -77,8 +78,12 @@
                     name: 'Cars',
                     data: data
                 }]
-
-            });
+            }, function(chart) {
+						$.each(chart.series[0].data, function(i, e) {
+                //console.log(e.dataLabel);
+                e.dataLabel.hide();
+						});
+					});
 
         });
     });
